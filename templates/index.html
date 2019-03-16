@@ -4,74 +4,81 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>Scrolling Nav - Start Bootstrap Template</title>
+    <title>Scrolling Nav - Start Bootstrap Template</title>
 
-  <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="static/scrolling-nav.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="static/scrolling-nav.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">CafeFinder</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-      </div>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">CafeFinder</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <header class="bg-primary text-white">
+<header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>Find local cafes without the wait!</h1>
-     {# <p class="lead">Find local cafes without the wait!</p>#}
+        <h1>Find local cafes without the wait!</h1>
+        {# <p class="lead">Find local cafes without the wait!</p>#}
     </div>
-  </header>
+</header>
 
-  <!-- Location input box -->
-  <div>
-      <form>
+<!-- Location input box -->
+<div>
+    <form>
         <input type="text" name="location" placeholder="Enter location here..."><br>
-      </form>
-  </div>
+    </form>
+</div>
 
-  <table class="table table-hover">
-  <tbody>
+<table class="table table-hover">
+    <tbody>
     {% for cafe in data %}
-                <tr>
-                    <th scope="row">{{ cafe.score }}</th>
-                    <td>{{ cafe.name }}</td>
-                    <td><a href="https://maps.google.ca" class="card-link">{{ cafe.address }}</a></td>
-                </tr>
-            {% endfor %}
+        <tr>
+            <th scope="row">
+                <div class="progress">
+                    <div class="progress-bar" style="width:{{ cafe.score }}%">{{ cafe.score }}&nbsp&nbsp&nbsp</div>
+                </div>
 
-  </tbody>
+            </th>
+            <td>{{ cafe.name }}</td>
+            <td><a href="https://maps.google.ca" class="card-link">{{ cafe.address }}</a></td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
 </table>
 
 
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
+<!-- Footer -->
+<footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; CafeFinder 2019</p>
+        <p class="m-0 text-center text-white">Copyright &copy; CafeFinder 2019</p>
     </div>
     <!-- /.container -->
-  </footer>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 

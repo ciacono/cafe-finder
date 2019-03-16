@@ -67,7 +67,7 @@
 
             </th>
             <td>{{ cafe.name }}</td>
-            <td><a href="https://maps.google.ca" class="card-link">{{ cafe.address }}</a></td>
+            <td><a href={{ cafe.link }} class="card-link">{{ cafe.address }}</a></td>
         </tr>
     {% endfor %}
 

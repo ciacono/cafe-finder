@@ -52,6 +52,3 @@ def good_locations(lat, lon, busy_pref, rating_pref):
             good_loc.append(location)
     sorted_cafes = sort_cafes(good_loc, busy_pref, rating_pref)
     return sorted_cafes
-
-
-good_locations(43.64469, -79.37996568810948, 0.5, 0.5)

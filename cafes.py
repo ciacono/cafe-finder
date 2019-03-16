@@ -15,30 +15,36 @@ class Cafe:
         self.num_ratings = ratings
         self.busy = busy
         self.id = id
+        self.link = "https://www.google.com/maps/place/?q=place_id:" + id
 
 
 # Returns a list of dictionaries, containing cafes 1km around lat, long
 def get_locations(lat, lon):
-    dist = 0.0089
+    dist = 0.0020
     min_lat = lat - dist
     max_lat = lat + dist
     min_lon = lon - dist
     max_lon = lon + dist
-    return populartimes.get(environ["APIKEY"], ["cafe"], (min_lat, min_lon), (max_lat, max_lon), 20, 1000)
+    return populartimes.get(environ["APIKEY"], ["cafe"], (min_lat, min_lon), (max_lat, max_lon), 20, 50)
 
 
 def sort_cafes(locs, busy_pref, rating_pref):
     sorted_cafes = []
+    scores = []
     for cafe in locs:
         if cafe.get("current_popularity") is not None and cafe["current_popularity"] != 0:
             popularity = cafe["current_popularity"]
         else:
             popularity = cafe["populartimes"][weekdate]["data"][cur_hour]
 
-        score = round((100 - busy_pref*popularity)/2 + rating_pref*cafe["rating"]*10, 2)
-        sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], score,
-                                 cafe["rating_n"], popularity, cafe["id"]))
+        score = int(round(((100 - popularity)*(busy_pref/100) + (rating_pref/5)*cafe["rating"]*20)/2, 0))
+        scores.append(score)
+        sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], int(score),
+                                 cafe["rating"], popularity, cafe["id"]))  # cafe["rating_n"], popularity, cafe["id"]))
     sorted_cafes = sorted(sorted_cafes, key=lambda x: x.score, reverse=True)
+    max_score = max(scores)
+    for cafe in sorted_cafes:
+        cafe.score = int(round((cafe.score / max_score)*100, 0))
     return sorted_cafes
 
 

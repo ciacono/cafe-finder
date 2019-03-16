@@ -18,3 +18,12 @@ input {
   text-align:center;
 }
 
+.progress-bar {
+  background-color: #007bff;
+}
+
+.progress {
+  height: 1.5rem;
+  font-size: 1.0rem;
+}
+

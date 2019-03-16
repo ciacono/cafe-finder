@@ -7,7 +7,7 @@ weekdate = datetime.datetime.today().weekday()
 
 
 class Cafe:
-    def __init__ (self, name, address, rating, score):
+    def __init__(self, name, address, rating, score):
         self.name = name
         self.address = address
         self.rating = rating

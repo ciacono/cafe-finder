@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    input[type=text], select {
-  width: 100%;
-  height: 75px;
-  font-size:25px;
-  text-align:center;
-}
-</style>
+
 
 <head>
 
@@ -56,11 +49,11 @@
 
   <table class="table table-hover">
   <tbody>
-    {% for Cafe in data %}
+    {% for cafe in data %}
                 <tr>
                     <th scope="row">{{ cafe.score }}</th>
                     <td>{{ cafe.name }}</td>
-                    <td><a href="https://maps.google.ca" class="card-link">{{ Cafe.address }}</a></td>
+                    <td><a href="https://maps.google.ca" class="card-link">{{ cafe.address }}</a></td>
                 </tr>
             {% endfor %}
 

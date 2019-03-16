@@ -7,18 +7,14 @@ weekdate = datetime.datetime.today().weekday()
 
 
 class Cafe:
-    def __init__ (self, name, address, rating, score):
+    def __init__ (self, name, address, rating, score, ratings, busy, id):
         self.name = name
         self.address = address
         self.rating = rating
         self.score = score
-
-
-c1 = Cafe("Arizona Biltmore Golf Club", "2818 E Camino Acequia Drive", 4.0, 80)
-c2 = Cafe("JJ Bean", "10000 Water Rd.", 0.1, 40)
-c3 = Cafe("Bean Around the World", "3 UBC Blvd.", 2.0, 99)
-c4 = Cafe("Greenhorn", "494848 Pender St.", 3.1, 10)
-c5 = Cafe("Water St. Cafe", "9999 Denman St.", 5.0, 70)
+        self.num_ratings = ratings
+        self.busy = busy
+        self.id = id
 
 
 # Returns a list of dictionaries, containing cafes 1km around lat, long
@@ -31,13 +27,22 @@ def get_locations(lat, lon):
     return populartimes.get(environ["APIKEY"], ["cafe"], (min_lat, min_lon), (max_lat, max_lon), 20, 1000)
 
 
-def sorting(item):
-    if item.get("current_popularity") is not None and item["current_popularity"] != 0:
-        return item["current_popularity"]
-    return item["populartimes"][weekdate]["data"][cur_hour]
+def sort_cafes(locs, busy_pref, rating_pref):
+    sorted_cafes = []
+    for cafe in locs:
+        if cafe.get("current_popularity") is not None and cafe["current_popularity"] != 0:
+            popularity = cafe["current_popularity"]
+        else:
+            popularity = cafe["populartimes"][weekdate]["data"][cur_hour]
+
+        score = round((100 - busy_pref*popularity)/2 + rating_pref*cafe["rating"]*10, 2)
+        sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], score,
+                                 cafe["rating_n"], popularity, cafe["id"]))
+    sorted_cafes = sorted(sorted_cafes, key=lambda x: x.score, reverse=True)
+    return sorted_cafes
 
 
-def good_locations(lat, lon):
+def good_locations(lat, lon, busy_pref, rating_pref):
     good_loc = []
     for location in get_locations(lat, lon):
         if location.get("current_popularity") is not None:
@@ -45,5 +50,8 @@ def good_locations(lat, lon):
             continue
         if location["populartimes"][weekdate]["data"][cur_hour] != 0:
             good_loc.append(location)
+    sorted_cafes = sort_cafes(good_loc, busy_pref, rating_pref)
+    return sorted_cafes
 
-    return sorted(good_loc, key=sorting)
+
+good_locations(43.64469, -79.37996568810948, 0.5, 0.5)

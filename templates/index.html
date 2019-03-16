@@ -69,7 +69,7 @@
     sample cards used top 6 cafes near Queen St W toronto#}
 
   <!-- Cafe list item card 1 -->
-  <div class="card-group">
+{#  <div class="card-group">
       <div class="card">
         <div class="card-body text-center">
           <p class="card-text">1</p>
@@ -87,139 +87,52 @@
           </p>
         </div>
       </div>
-  </div>
-
-   <!-- Cafe list item card 2 -->
-  <div class="card-group">
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">2</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Quantum Coffee</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-              <a href="https://goo.gl/maps/H4wDjgR2b622" class="card-link">460 King Street W</a>
-          </p>
-        </div>
-      </div>
-  </div>
-
-   <!-- Cafe list item card 3 -->
-  <div class="card-group">
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">3</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Forget Me Not Cafe</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-              <a href="https://goo.gl/maps/NXA8k8ZNdsq" class="card-link">506 Adelaide Street W</a>
-          </p>
-        </div>
-      </div>
-  </div>
-
-   <!-- Cafe list item card 4 -->
-  <div class="card-group">
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">4</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Cozy Coffee</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-              <a href="https://goo.gl/maps/b7WGZz92j3s" class="card-link">200 Queen Street W</a>
-          </p>
-        </div>
-      </div>
-  </div>
-
-   <!-- Cafe list item card 5 -->
-  <div class="card-group">
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">5</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Rialto Espresso Bar</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-              <a href="https://goo.gl/maps/L3Bw4PGzdUS2" class="card-link">266 Adelaide Street W</a>
-          </p>
-        </div>
-      </div>
-  </div>
-
-   <!-- Cafe list item card 6 -->
-  <div class="card-group">
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">6</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">HotBlack Coffee</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-              <a href="https://goo.gl/maps/ivtKXqKbYUt" class="card-link">245 Queen Street W</a>
-          </p>
-        </div>
-      </div>
-  </div>
-
-
-  {#<!-- Cafe list item card -->
-  <div class="card-group">
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Score</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Name</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Address</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-              <a href="https://www.google.ca/maps" class="card-link">Google maps</a>
-          </p>
-        </div>
-      </div>
   </div>#}
+
+  <table class="table table-hover">
+  {#<thead>
+    <tr>
+      <th scope="col">Rank</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>#}
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>The Coffee Lab</td>
+      <td> <a href="https://goo.gl/maps/WF1wL4VBTCu" class="card-link">141 Spadina Avenue</a></th>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Quantum Coffee</td>
+      <td> <a href="https://goo.gl/maps/H4wDjgR2b622" class="card-link">460 King Street W</a></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Forget Me Not Cafe</td>
+      <td> <a href="https://goo.gl/maps/NXA8k8ZNdsq" class="card-link">506 Adelaide Street W</a></td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Cozy Coffee</td>
+      <td> <a href="https://goo.gl/maps/b7WGZz92j3s" class="card-link">200 Queen Street W</a></td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Rialto Espresso Bar</td>
+      <td> <a href="https://goo.gl/maps/L3Bw4PGzdUS2" class="card-link">266 Adelaide Street W</a></td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>HotBlack Coffee</td>
+      <td> <a href="https://goo.gl/maps/ivtKXqKbYUt" class="card-link">245 Queen Street W</a></td>
+    </tr>
+
+  </tbody>
+</table>
+
 
 
   <!-- Footer -->

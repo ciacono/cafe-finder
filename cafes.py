@@ -20,7 +20,7 @@ class Cafe:
 
 # Returns a list of dictionaries, containing cafes 1km around lat, long
 def get_locations(lat, lon):
-    dist = 0.0030
+    dist = 0.0020
     min_lat = lat - dist
     max_lat = lat + dist
     min_lon = lon - dist
@@ -30,16 +30,22 @@ def get_locations(lat, lon):
 
 def sort_cafes(locs, busy_pref, rating_pref):
     sorted_cafes = []
+    scores = []
     for cafe in locs:
         if cafe.get("current_popularity") is not None and cafe["current_popularity"] != 0:
             popularity = cafe["current_popularity"]
         else:
             popularity = cafe["populartimes"][weekdate]["data"][cur_hour]
 
-        score = round((100 - busy_pref*popularity)/2 + rating_pref*cafe["rating"]*10, 2)
-        sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], int(score),
-                                 cafe["rating_n"], popularity, cafe["id"]))
+        score = int(round(((100 - popularity)*(busy_pref/100) + (1 - busy_pref/100)*cafe["rating"]*20)/2, 0))
+        scores.append(score)
+        if cafe["rating"] >= rating_pref:
+            sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], int(score),
+                                     cafe["rating"], popularity, cafe["id"]))
     sorted_cafes = sorted(sorted_cafes, key=lambda x: x.score, reverse=True)
+    max_score = max(scores)
+    for cafe in sorted_cafes:
+        cafe.score = int(round((cafe.score / max_score)*100, 0))
     return sorted_cafes
 
 

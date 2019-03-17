@@ -20,7 +20,7 @@ class Cafe:
 
 # Returns a list of dictionaries, containing cafes 1km around lat, long
 def get_locations(lat, lon):
-    dist = 0.0020
+    dist = 0.0050
     min_lat = lat - dist
     max_lat = lat + dist
     min_lon = lon - dist
@@ -43,9 +43,10 @@ def sort_cafes(locs, busy_pref, rating_pref):
             sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], int(score),
                                      cafe["rating"], popularity, cafe["id"]))
     sorted_cafes = sorted(sorted_cafes, key=lambda x: x.score, reverse=True)
-    max_score = max(scores)
-    for cafe in sorted_cafes:
-        cafe.score = int(round((cafe.score / max_score)*100, 0))
+    if scores:
+        max_score = max(scores)
+        for cafe in sorted_cafes:
+            cafe.score = int(round((cafe.score / max_score)*100, 0))
     return sorted_cafes
 
 

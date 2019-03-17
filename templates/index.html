@@ -47,8 +47,8 @@
 
 <!-- Location input box -->
   <div class="mb-3">
-      <form>
-        <input type="text" name="location" placeholder="Enter location here..."><br>
+      <form action="/location">
+        <input id="locationTextField" type="text" name="location" placeholder="Enter location here..."><br>
       </form>
   </div>
 
@@ -115,6 +115,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<script src="static/more.js"></script>
+<script>
+    window.onload = function () {
+        getLocation();
+    };
+</script>
+
 
 
 </body>

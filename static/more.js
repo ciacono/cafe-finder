@@ -16,3 +16,21 @@ function showPosition(position) {
 function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition);
 }
+
+function filterTable(rating) {
+  var table, tr, td, i, txtValue;
+  table = document.getElementById("cafes");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (parseFloat(txtValue) > rating) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}

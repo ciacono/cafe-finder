@@ -73,7 +73,7 @@
                 <script>
                     function filter(rating) {
                         starvalue.value=rating
-                        console.log(rating)
+                        filterTable(rating)
                     }
                 </script>
                 <input name="rating" type="range" class="custom-range score mb-3" id="customRange1 rating" min="0.0"
@@ -85,7 +85,7 @@
 </div>
 
 
-<table class="table table-hover">
+<table id="cafes" class="table table-hover">
     <thead>
     <tr>
         <th>Score</th>
@@ -104,6 +104,7 @@
             </th>
             <td>{{ cafe.name }}</td>
             <td><a href={{ cafe.link }} class="card-link">{{ cafe.address }}</a></td>
+            <td style="display: none">{{ cafe.rating }}</td>
         </tr>
     {% endfor %}
 
@@ -114,7 +115,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; CafeFinder 2019</p>
+        <p class="m-0 text-center text-white">CafeFinder</p>
     </div>
     <!-- /.container -->
 </footer>

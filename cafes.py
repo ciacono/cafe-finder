@@ -20,7 +20,7 @@ class Cafe:
 
 # Returns a list of dictionaries, containing cafes 1km around lat, long
 def get_locations(lat, lon):
-    dist = 0.0089
+    dist = 0.0030
     min_lat = lat - dist
     max_lat = lat + dist
     min_lon = lon - dist

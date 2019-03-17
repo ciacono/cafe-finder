@@ -21,6 +21,9 @@
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body id="page-top">
@@ -47,18 +50,8 @@
 
 <!-- Location input box -->
 <div>
-    <form target="/location">
+    <form action="/location">
         <input id="locationTextField" type="text" name="location" placeholder="Enter location here..."><br>
-        <script>
-            function init() {
-                var input = document.getElementById('locationTextField');
-                var autocomplete = new google.maps.places.Autocomplete(input);
-                var place = autocomplete.getPlace();
-                var lat =  place.geometry.location.lat();
-                var lon = place.geometry.location.lng();
-            }
-            google.maps.event.addDomListener(window, 'load', init);
-        </script>
     </form>
 </div>
 
@@ -92,15 +85,20 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; CafeFinder 2019</p>
+        <p class="m-0 text-center text-white">CafeFinder</p>
     </div>
     <!-- /.container -->
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="static/more.js"></script>
+<script>
+    window.onload = function () {
+        getLocation();
+    };
+</script>
 
 
 </body>

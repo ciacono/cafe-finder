@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <title>Cafe Finder!</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -26,10 +26,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">CafeFinder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
         </div>
     </div>
@@ -43,47 +39,59 @@
 </header>
 
 <!-- Font Awesome -->
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <!-- Location input box -->
-  <div class="mb-3">
-      <form action="/location">
+<div class="mb-3">
+    <form action="/location">
         <input id="locationTextField" type="text" name="location" placeholder="Enter location here..."><br>
-      </form>
-  </div>
+        <div class="d-flex justify-content-center range-slider mt-3">
+            <span class="text-primary ml-1"> I want it </span>
+            <output class="justify-content-center ml-1 text-primary" id="rangevalue">50</output>
+            <span class="text-primary"> % Quiet</span>
+        </div>
+        <div class="d-flex justify-content-center range-slider mt-3">
+            <div class="range-field w-75">
+                <input name="quiet" type="range" class="custom-range score mb-1" id="customRange1 business" min="0"
+                       max="100"
+                       step="1" onchange="rangevalue.value=value">
+            </div>
+        </div>
+    </form>
+</div>
 
+<div>
+    <div>
+        <div class="d-flex justify-content-center range-slider mt-3">
+            <span class="text-primary ml-1"> Minimum rating: </span>
+            <output class="justify-content-center text-primary ml-1 mb-3" id="starvalue">2.5</output>
+            <i class="fas fa-star text-primary mt-1"></i>
+        </div>
+        <div class="d-flex justify-content-center range-slider">
+            <form class="range-field w-75">
+                <script>
+                    function filter(rating) {
+                        starvalue.value=rating
+                        console.log(rating)
+                    }
+                </script>
+                <input name="rating" type="range" class="custom-range score mb-3" id="customRange1 rating" min="0.0"
+                       max="5.0"
+                       step="0.1" onchange=filter(value)>
+            </form>
+        </div>
+    </div>
+</div>
 
-  <div class="d-flex justify-content-center range-slider mt-3">
-      <span class="text-primary ml-1"> I want it </span>
-  <output class="justify-content-center ml-1 text-primary" id="rangevalue">50 </output>
-      <span class="text-primary"> % Quiet</span>
-  </div>
-  <div class="d-flex justify-content-center range-slider mt-3">
-  <form class="range-field w-75">
-      <input name="rating" type="range" class="custom-range score mb-1" id="customRange1 business" min="0" max="100" step="1" onchange="rangevalue.value=value">
-  </form>
-  </div>
-  <div class="d-flex justify-content-center range-slider mt-3">
-      <span class="text-primary ml-1"> Minimum rating: </span>
-  <output class="justify-content-center text-primary ml-1 mb-3" id="starvalue">2.5</output>
-      <i class="fas fa-star text-primary mt-1"></i>
-  </div>
-  <div class="d-flex justify-content-center range-slider">
-  <form class="range-field w-75">
-      <input name="rating" type="range" class="custom-range score mb-3" id="customRange1 rating" min="0.0" max="5.0" step="0.1" onchange="starvalue.value=value">
-  </form>
-  </div>
-  <div class="d-flex justify-content-center mt-4">
-      <button type="button " class="btn btn-primary btn-lg btn-block">Filter</button>
-  </div>
 
 <table class="table table-hover">
     <thead>
-        <tr>
-            <th>Score</th>
-            <th>Cafe Name</th>
-            <th>Address</th>
-        </tr>
+    <tr>
+        <th>Score</th>
+        <th>Cafe Name</th>
+        <th>Address</th>
+    </tr>
     </thead>
     <tbody>
     {% for cafe in data %}
@@ -122,7 +130,6 @@
         getLocation();
     };
 </script>
-
 
 
 </body>

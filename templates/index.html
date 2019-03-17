@@ -48,12 +48,12 @@
         <input id="locationTextField" type="text" name="location" placeholder="Enter location here..."><br>
         <div class="d-flex justify-content-center range-slider mt-3">
             <span class="text-primary ml-1"> I want it </span>
-            <output class="justify-content-center ml-1 text-primary" id="rangevalue">50</output>
+            <output class="justify-content-center ml-1 text-primary" id="rangevalue">{{ quiet }}</output>
             <span class="text-primary"> % Quiet</span>
         </div>
         <div class="d-flex justify-content-center range-slider mt-3">
             <div class="range-field w-75">
-                <input name="quiet" type="range" class="custom-range score mb-1" id="customRange1 business" min="0"
+                <input name="quiet" type="range" value="{{ quiet }}" class="custom-range score mb-1" id="customRange1 business" min="0"
                        max="100"
                        step="1" onchange="rangevalue.value=value">
             </div>

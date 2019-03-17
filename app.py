@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     data = []
-    return render_template('index.html', data=data, api_key=environ["APIKEY"])
+    return render_template('index.html', data=data, quiet=50, api_key=environ["APIKEY"])
 
 
 @app.route('/location', methods=['GET', 'POST'])
@@ -21,7 +21,7 @@ def location():
     lon = float(coords[1])
     quiet = int(request.args.get('quiet'))
     data = good_locations(lat, lon, quiet, 0)
-    return render_template('index.html', data=data, api_key=environ["APIKEY"])
+    return render_template('index.html', data=data, quiet=quiet, api_key=environ["APIKEY"])
 
 
 if __name__ == '__main__':

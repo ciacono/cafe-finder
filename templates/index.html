@@ -59,8 +59,8 @@
       <span class="text-primary"> % Quiet</span>
   </div>
   <div class="d-flex justify-content-center range-slider mt-3">
-  <form class="range-field w-75">
-      <input name="rating" type="range" class="custom-range score mb-1" id="customRange1 business" min="0" max="100" step="1" onchange="rangevalue.value=value">
+  <form class="range-field w-75" method="post" action="business">
+      <input name="business" type="range" class="custom-range score mb-1" id="customRange1 business" min="0" max="100" step="1" onchange="rangevalue.value=value">
   </form>
   </div>
   <div class="d-flex justify-content-center range-slider mt-3">
@@ -69,12 +69,12 @@
       <i class="fas fa-star text-primary mt-1"></i>
   </div>
   <div class="d-flex justify-content-center range-slider">
-  <form class="range-field w-75">
+  <form class="range-field w-75" method="post" action="rating">
       <input name="rating" type="range" class="custom-range score mb-3" id="customRange1 rating" min="0.0" max="5.0" step="0.1" onchange="starvalue.value=value">
   </form>
   </div>
   <div class="d-flex justify-content-center mt-4">
-      <button type="button " class="btn btn-primary btn-lg btn-block">Filter</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Filter</button>
   </div>
 
 <table class="table table-hover">

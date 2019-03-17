@@ -18,6 +18,10 @@
     <!-- Custom styles for this template -->
     <link href="static/scrolling-nav.css" rel="stylesheet">
 
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places"></script>
+
+
 </head>
 
 <body id="page-top">
@@ -53,7 +57,8 @@
         </div>
         <div class="d-flex justify-content-center range-slider mt-3">
             <div class="range-field w-75">
-                <input name="quiet" type="range" value="{{ quiet }}" class="custom-range score mb-1" id="customRange1 business" min="0"
+                <input name="quiet" type="range" value="{{ quiet }}" class="custom-range score mb-1"
+                       id="customRange1 business" min="0"
                        max="100"
                        step="1" onchange="rangevalue.value=value">
             </div>
@@ -72,7 +77,7 @@
             <form class="range-field w-75">
                 <script>
                     function filter(rating) {
-                        starvalue.value=rating
+                        starvalue.value = rating
                         filterTable(rating)
                     }
                 </script>

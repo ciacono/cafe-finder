@@ -37,10 +37,11 @@ def sort_cafes(locs, busy_pref, rating_pref):
         else:
             popularity = cafe["populartimes"][weekdate]["data"][cur_hour]
 
-        score = int(round(((100 - popularity)*(busy_pref/100) + (rating_pref/5)*cafe["rating"]*20)/2, 0))
+        score = int(round(((100 - popularity)*(busy_pref/100) + (1 - busy_pref/100)*cafe["rating"]*20)/2, 0))
         scores.append(score)
-        sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], int(score),
-                                 cafe["rating"], popularity, cafe["id"]))  # cafe["rating_n"], popularity, cafe["id"]))
+        if cafe["rating"] >= rating_pref:
+            sorted_cafes.append(Cafe(cafe["name"], cafe["address"], cafe["rating"], int(score),
+                                     cafe["rating"], popularity, cafe["id"]))
     sorted_cafes = sorted(sorted_cafes, key=lambda x: x.score, reverse=True)
     max_score = max(scores)
     for cafe in sorted_cafes:
